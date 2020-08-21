@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script>
+        // 等页面加载完成后
+        $(function () {
+            // 给username绑定blur事件
+            $("#username").blur(function () {
+                // 获得输入文本框的值
+                var uName=$(this).val();
+                alert(uName);
+                // 发送ajax异步请求
+                $.get("loginNameCheck",{username:uName},function (data) {
+                    // 判断用户名是否存在
+                    // 提示文本调整格式
+                    var span=$("#s_username");
+                    alert(data.userExsit);
+                    if(data.userExsit){
+                        // 用户名存在
+                        span.css("color","red");
+                        span.html(data.msg);
+                    }else{
+                        span.css("color","green");
+                        span.html(data.msg);
+                    }
+
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="username" name="username" placeholder="用户名">
+        <sapn id="s_username"></sapn>
+        <br/>
+        <input type="password" name="password" placeholder="密码"><br/>
+        <input type="submit" value="注册"><br/>
+    </form>
+</body>
+</html>

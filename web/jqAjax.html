@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script>
+        // 定义方法
+        $(function () {
+            // 使用$.ajax发送异步请求
+            $.ajax({
+                // 请求路径
+                url:"ajaxTest",
+                // 请求方式
+                type:"POST",
+                // 请求参数
+                // data:"username=jack&age=123",
+                data:{"username":"jack","age":123},
+                // 可选，响应成功以及失败后的回调函数
+                success:function(data){
+                    alert(data); },
+                error:function () {
+                alert("出错了"); },
+                // 设置接收到的响应数据的格式
+                dataType:"text"
+            });
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

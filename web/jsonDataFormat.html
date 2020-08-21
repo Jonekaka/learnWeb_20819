@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 定义基本格式
+        // var person={"name":"李四","age":123};
+        // alert(person.name);
+        // alert(person["name"]);
+        // 嵌套格式，{[]}
+        var person={
+            "person":[
+                    {"name":"李四","age":123},
+                    {"name":"李四","age":123},
+                    {"name":"李四","age":123}]};
+        // alert(person.person[2].name);
+        // alert(person.person[1]);
+        // 嵌套格式[{}]
+        var ps=[{"name":"李四","age":123},{"name":"李四","age":123}];
+        // alert(ps[1].name);
+        // 遍历,对于数组，获得数组长度
+        for(var i=0;i<ps.length;i++)
+        {
+            var person=ps[i];
+            // 获得的都是键，“xxx”,因此实用a.b方式不行，相当于a."xxx",要使用a["xx"]
+            for(var key in person){
+                alert(person[key]);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

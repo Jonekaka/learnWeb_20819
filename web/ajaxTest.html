@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <script>
+        // 定义方法
+        function  fun() {
+            // 发送异步请求
+            // 创建核心对象
+            var xmlHttp;
+            if(window.XMLHttpRequest){
+                // code for it7+,firefox,chorme,opera,safari
+                xmlHttp=new XMLHttpRequest();
+            }else{
+                // code for ie6,5
+                xmlHttp=new ActiveXObject();
+            }
+            // 建立连接
+            // get，send方法空参，参数在url后拼接
+            // post 参数在send中
+            // ,url,同步或者异步请求开关
+            xmlHttp.open("GET","ajaxTest?username=tom",true);
+            // 发送请求
+            xmlHttp.send();
+            // 接收并处理服务器反馈结果
+            // 服务器响应成功后才能获取，获取方法为xmlHttp.responseText
+            xmlHttp.onreadystatechange=function () {
+                // 判断响应状态，readystate就绪状态是否为4，status响应码是否为200
+                // 4,请求已经完成，响应就绪
+                // alert(xmlHttp.readyState);
+                // alert(xmlHttp.status);
+                if(xmlHttp.readyState==4 && xmlHttp.status==200){
+                    // 响应成功，获得结果
+                    var respText=xmlHttp.responseText;
+                    alert(respText);
+                }
+                // 这一个不应该出现，因为他会递增式的从234判断，直到4成功才开始执行
+                // else{
+                //     alert("错误");
+                // }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="发送异步请求" onclick="fun()">
+<input>
+</body>
+</html>
